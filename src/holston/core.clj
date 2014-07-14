@@ -13,6 +13,6 @@
   (not-found "<p>Page not found.</p>"))
 
 (defn -main
-  "Starts the application"
+  "Starts the server"
   [port]
   (run-server (site #'all-routes) {:port (Integer. port)}))
