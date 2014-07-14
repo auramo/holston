@@ -7,6 +7,7 @@
                  [http-kit "2.1.16"]
                  [javax.servlet/servlet-api "2.5"]
                  [compojure "1.1.8"]]
+  :uberjar-name "holston-standalone.jar"
   :main ^:skip-aot holston.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
