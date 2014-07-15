@@ -2,10 +2,18 @@
   (:use [compojure.route :only [files not-found]]
       [compojure.handler :only [site]]
       [compojure.core :only [defroutes GET POST DELETE ANY context]]
-      org.httpkit.server))
+      [clojure.java.jdbc :as sql]
+      org.httpkit.server)
+  (:gen-class))
+
+(def db-url (or (System/getenv "DATABASE_URL")
+              "postgresql://localhost:5432/holston"))
 
 (defn show-landing-page [req]
-  "Holston ready for e-business")
+  (println (sql/query "postgresql://localhost:5432/holston"
+           ["select 'Hello World'"]))
+  (str "Holston is ready for e-business " (:?column? (first (sql/query db-url
+           ["select 'with a DB!'"])))))
 
 (defroutes all-routes
   (GET "/" [] show-landing-page)
