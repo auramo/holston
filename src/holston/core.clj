@@ -10,7 +10,7 @@
               "postgresql://localhost:5432/holston"))
 
 (defn show-landing-page [req]
-  (println ("DB url:" db))
+  (println (str "DB url:" db-url))
   (str "Holston is ready for e-business " (:?column? (first (sql/query db-url
            ["select 'with a DB!'"])))))
 
