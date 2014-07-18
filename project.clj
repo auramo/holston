@@ -9,7 +9,8 @@
                  [javax.servlet/servlet-api "2.5"]
                  [compojure "1.1.8"]
                  [org.clojure/java.jdbc "0.3.4"]
-                 [postgresql "9.1-901.jdbc4"]]
+                 [postgresql "9.1-901.jdbc4"]
+                 [clojure-csv/clojure-csv "2.0.1"]] ;;https://github.com/davidsantiago/clojure-csv
 ;; uberjar doesn't seem to work now...
   :uberjar-name "holston-standalone.jar"
   :main ^:skip-aot holston.core
