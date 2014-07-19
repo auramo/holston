@@ -12,7 +12,7 @@
     (csv/parse-csv (slurp file))))
 
 (defn parse-row [row]
-  {:name (get row 4) :brewery (get row 5)})
+  {:beer-name (get row 4) :brewery (get row 5)})
 
 (defn parse-tastings [file-name]
   (map parse-row (rest (take-csv file-name))))
@@ -26,9 +26,16 @@
       (do (repo/add-brewery name)
           (:id (repo/get-brewery name))))))
 
+(defn import-named-entity [name search-func add-func]
+  (let [record-from-db (search-func name)]
+    (if (> (count record-from-db) 0)
+      (:id record-from-db)
+      (do (add-func name)
+          (:id (search-func name))))))
+
 (defn import-one-tasting [raw-tasting]
-  (let [brewery-id (import-brewery (:brewery raw-tasting))]
-    (repo/add-tasting {:brewery_id brewery-id :name (:name raw-tasting)})))
+  (repo/add-tasting {:brewery_id (import-named-entity (:brewery raw-tasting) repo/get-brewery repo/add-brewery)
+                     :beer_id (import-named-entity (:beer-name raw-tasting) repo/get-beer repo/add-beer)}))
 
 (defn import-data [file-name]
   (doseq [tasting (parse-tastings file-name)]
