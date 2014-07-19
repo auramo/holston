@@ -15,4 +15,5 @@ CREATE TABLE beer (id serial PRIMARY KEY,
 -- Very minimal table for testing end-to-end functionalities
 CREATE TABLE tasting (id serial PRIMARY KEY, 
                       beer_id integer REFERENCES beer(id), 
-                      brewery_id integer REFERENCES brewery(id));
+                      brewery_id integer REFERENCES brewery(id),
+                      user_rating integer);
