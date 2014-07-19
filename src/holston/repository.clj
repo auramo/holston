@@ -9,7 +9,6 @@
               "postgresql://localhost:5432/holston"))
 
 (defn add-tasting [tasting]
-  (println tasting)
   (jdbc/insert! db :tasting tasting))
 
 (defn get-brewery [name]
@@ -23,3 +22,7 @@
 
 (defn add-beer [name]
   (jdbc/insert! db :beer {:name name}))
+
+(defn db-sanity-check []
+  (str "Static query from DB value: " (:?column? (first (jdbc/query db
+           ["select 'foobar'"])))))
