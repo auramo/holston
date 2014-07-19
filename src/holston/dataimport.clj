@@ -17,7 +17,20 @@
 (defn parse-tastings [file-name]
   (map parse-row (rest (take-csv file-name))))
 
+;; Adds the brewery if it's not already there
+;; Returns id
+(defn import-brewery [name]
+  (let [brewery-from-db (repo/get-brewery name)]
+    (if (> (count brewery-from-db) 0)
+      (:id brewery-from-db)
+      (do (repo/add-brewery name)
+          (:id (repo/get-brewery name))))))
+
+(defn import-one-tasting [raw-tasting]
+  (let [brewery-id (import-brewery (:brewery raw-tasting))]
+    (repo/add-tasting {:brewery_id brewery-id :name (:name raw-tasting)})))
+
 (defn import-data [file-name]
   (doseq [tasting (parse-tastings file-name)]
     (println "Importing" tasting)
-    (repo/add-tasting tasting)))
+    (import-one-tasting tasting)))

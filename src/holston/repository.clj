@@ -9,5 +9,11 @@
               "postgresql://localhost:5432/holston"))
 
 (defn add-tasting [tasting]
+  (println tasting)
   (jdbc/insert! db :tasting tasting))
 
+(defn get-brewery [name]
+  (first (jdbc/query db ["SELECT id, name FROM brewery WHERE name = ?" name])))
+
+(defn add-brewery [name]
+  (jdbc/insert! db :brewery {:name name}))
