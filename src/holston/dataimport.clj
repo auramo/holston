@@ -1,4 +1,6 @@
 ;; Used for CSV-import of a very special file-format
+;; Example usage:
+;; lein run -m holston.dataimport/import-data "/Users/auramo/Downloads/olusia.csv"
 
 (ns holston.dataimport
   (:require [clojure-csv.core :as csv]
