@@ -9,7 +9,7 @@
             [clj-http.client :as client]
             (cemerick.friend [workflows :as workflows]
                              [credentials :as creds]))
-  (:use [compojure.route :only [files not-found]]
+  (:use [compojure.route :only [files resources not-found]]
         [compojure.handler :only [site]]
         [compojure.core :only [defroutes GET POST DELETE ANY context]]
         [clojure.java.jdbc :as sql]
@@ -67,7 +67,7 @@
   (GET "/admin" request
        (friend/authorize #{::admin} "Only admins can see this page."))
   (friend/logout (ANY "/logout" request (ring.util.response/redirect "/")))
-  (files "/static/"))
+  (files "/"))
 
 (def app
   (handler/site
