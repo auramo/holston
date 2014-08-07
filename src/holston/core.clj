@@ -64,6 +64,10 @@
        (friend/authorize #{::user} "Authorized page."))
   (GET "/authlink2" request
        (friend/authorize #{::user} "Authorized page 2."))
+  (GET "/logged-in" request
+       (str (:cemerick.friend/identity (:session request))))
+  (GET "/dlogin" request
+       (friend/authenticated "Dummy login page"))
   (GET "/admin" request
        (friend/authorize #{::admin} "Only admins can see this page."))
   (friend/logout (ANY "/logout" request (ring.util.response/redirect "/")))

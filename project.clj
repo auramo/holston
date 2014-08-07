@@ -12,7 +12,7 @@
                  [org.clojure/java.jdbc "0.3.4"]
                  [postgresql "9.1-901.jdbc4"]
                  [clojure-csv/clojure-csv "2.0.1"]  ;;https://github.com/davidsantiago/clojure-csv
-                 [com.cemerick/friend "0.2.0" :exclusions [ring/ring-core]]
+                 [com.cemerick/friend "0.2.1" :exclusions [ring/ring-core]]
                  [friend-oauth2 "0.1.1" :exclusions [org.apache.httpcomponents/httpcore]]
                  [cheshire "5.2.0"]
                  [ring-server "0.3.0" :exclusions [ring]]
