@@ -29,23 +29,24 @@
   (or (System/getenv name)
       (throw (Exception. (str "Mandatory environment variable missing: " name)))))
 
-(def client-config
+(defn create-client-config []
   {:client-id (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_ID")
    :client-secret (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_SECRET")
    :callback {:domain "http://localhost:8080" :path "/oauth2callback"}})
 
-(def uri-config
-  {:authentication-uri {:url "https://accounts.google.com/o/oauth2/auth"
-                       :query {:client_id (:client-id client-config)
-                               :response_type "code"
-                               :redirect_uri (format-config-uri client-config)
-                               :scope "https://www.googleapis.com/auth/userinfo.email" }}
+(defn uri-config []
+  (let [client-config (create-client-config)]
+    {:authentication-uri {:url "https://accounts.google.com/o/oauth2/auth"
+                          :query {:client_id (:client-id client-config)
+                                  :response_type "code"
+                                  :redirect_uri (format-config-uri client-config)
+                                  :scope "https://www.googleapis.com/auth/userinfo.email" }}
 
-   :access-token-uri {:url "https://accounts.google.com/o/oauth2/token"
-                      :query {:client_id (:client-id client-config)
-                              :client_secret (:client-secret client-config)
-                              :grant_type "authorization_code"
-                              :redirect_uri (format-config-uri client-config)}}})
+     :access-token-uri {:url "https://accounts.google.com/o/oauth2/token"
+                        :query {:client_id (:client-id client-config)
+                                :client_secret (:client-secret client-config)
+                                :grant_type "authorization_code"
+                                :redirect_uri (format-config-uri client-config)}}}))
 
 (defn- fetch-email-address [access-token]
   (let [response (client/get
@@ -91,8 +92,8 @@
     ring-app
     {:allow-anon? true
      :workflows [(oauth2/workflow
-                  {:client-config client-config
-                   :uri-config uri-config
+                  {:client-config (create-client-config)
+                   :uri-config (uri-config)
                    ;;:config-auth config-auth
                    :auth-error-fn (fn [error]
                                     (ring.util.response/response error))
