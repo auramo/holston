@@ -21,6 +21,9 @@
 (def config-auth {:roles #{::user}})
 
 (defn get-mandatory-env-var [name]
+  (println (str "env var" name))
+  (println (System/getenv name))
+  (println "Now the or..")
   (or (System/getenv name)
       (throw (Exception. (str "Mandatory environment variable missing: " name)))))
 
