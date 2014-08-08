@@ -18,9 +18,13 @@
 
 (def config-auth {:roles #{::user}})
 
+(defn get-mandatory-env-var [name]
+  (or (System/getenv name)
+      (throw (Exception. (str "Mandatory environment variable missing: " name)))))
+
 (def client-config
-  {:client-id "641379821393-vpt0pi6bdgntd751l2bd5hm1bf7vqrl7.apps.googleusercontent.com"
-   :client-secret "f9mMWwhsqhkY9_N1OthLenKO"
+  {:client-id (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_ID")
+   :client-secret (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_SECRET")
    :callback {:domain "http://localhost:8080" :path "/oauth2callback"}})
 
 (def uri-config
