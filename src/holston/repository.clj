@@ -11,6 +11,9 @@
 (defn add-tasting [tasting]
   (jdbc/insert! db :tasting tasting))
 
+(defn get-number-of-tastings []
+  (:count (first (jdbc/query db ["select count(*) from tasting"]))))
+
 (defn get-brewery [name]
   (first (jdbc/query db ["SELECT id, name FROM brewery WHERE name = ?" name])))
 

@@ -7,10 +7,12 @@
             [friend-oauth2.util :refer [format-config-uri]]
             [cheshire.core :as j]
             [clj-http.client :as client]
+            [holston.repository :as repo]
             (cemerick.friend [workflows :as workflows]
                              [credentials :as creds]))
   (:use [compojure.route :only [files resources not-found]]
         [compojure.handler :only [site]]
+        [ring.util.response :only [response]]
         [compojure.core :only [defroutes GET POST DELETE ANY context]]
         [clojure.java.jdbc :as sql]
         org.httpkit.server)
@@ -57,10 +59,11 @@
 
 (defroutes ring-app
   (GET "/" request "open.")
+  (GET "/api/tastings/count" request (response (str (repo/get-number-of-tastings))) )
   (GET "/status" request
        (let [count (:count (:session request) 0)
              session (assoc (:session request) :count (inc count))]
-         (-> (ring.util.response/response
+         (-> (response
               (str "<p>We've hit the session page " (:count session)
                    " times.</p><p>The current session: " session "</p>"))
              (assoc :session session))))
