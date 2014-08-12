@@ -31,6 +31,8 @@
     "http://localhost:8080"))
 
 (defn create-client-config []
+  (println "callback domain")
+  (println (get-oauth-callback-domain))
   {:client-id (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_ID")
    :client-secret (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_SECRET")
    :callback {:domain (get-oauth-callback-domain) :path "/oauth2callback"}})
