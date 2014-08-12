@@ -25,10 +25,15 @@
       (slurp (str (System/getenv "ENV_DIR") "/" name)) ;; This happens in macroexpansion and heroku only reveals config vars this way in compile
       (throw (Exception. (str "Mandatory environment variable missing: " name)))))
 
+(defn get-oauth-callback-domain []
+  (if (System/getenv "ENV_DIR") ;; We're in Heroku, not local env
+    (get-mandatory-env-var "HOLSTON_OATH2_CALLBACK_DOMAIN")
+    "http://localhost:8080"))
+
 (defn create-client-config []
   {:client-id (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_ID")
    :client-secret (get-mandatory-env-var "HOLSTON_GOOGLE_CLIENT_SECRET")
-   :callback {:domain "http://localhost:8080" :path "/oauth2callback"}})
+   :callback {:domain (get-oauth-callback-domain) :path "/oauth2callback"}})
 
 (defn uri-config []
   (let [client-config (create-client-config)]
