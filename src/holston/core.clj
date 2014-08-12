@@ -28,7 +28,10 @@
 (defn get-oauth-callback-domain []
   (println "ENV_DIR")
   (println (System/getenv "ENV_DIR"))
-  (if (System/getenv "ENV_DIR") ;; We're in Heroku, not local env
+  (println "DYNO")
+  (println (System/getenv "DYNO"))
+  
+  (if (or (System/getenv "ENV_DIR") (System/getenv "DYNO")) ;; We're in Heroku, not local env
     (get-mandatory-env-var "HOLSTON_OATH2_CALLBACK_DOMAIN")
     "http://localhost:8080"))
 
