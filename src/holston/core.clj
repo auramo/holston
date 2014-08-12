@@ -3,9 +3,8 @@
             [compojure.handler :as handler]
             [compojure.route :as route]
             [cemerick.friend :as friend]
-            [cheshire.core :as j]
             [holston.auth :as auth]
-            [holston.repository :as repo])
+            [holston.restapi :as api])
   (:use [compojure.route :only [files resources not-found]]
         [compojure.handler :only [site]]
         [ring.util.response :only [response]]
@@ -15,25 +14,25 @@
 
 (defroutes ring-app
   (GET "/" request "open.")
-  (GET "/api/tastings/count" request (response (str (repo/get-number-of-tastings))) )
-  (GET "/status" request
-       (let [count (:count (:session request) 0)
-             session (assoc (:session request) :count (inc count))]
-         (-> (response
-              (str "<p>We've hit the session page " (:count session)
-                   " times.</p><p>The current session: " session "</p>"))
-             (assoc :session session))))
+
+  ;; API methods
+  (GET "/api/tastings/count" request (api/count-of-tastings))
+
+  ;; Dummy stuff which "tests" now authorization, to be removed
   (GET "/authlink" request
        (friend/authorize #{::user} "Authorized page."))
   (GET "/authlink2" request
        (friend/authorize #{::user} "Authorized page 2."))
+  (GET "/admin" request
+       (friend/authorize #{::admin} "Only admins can see this page."))
+
+  ;; Authentication stuff
   (GET "/logged-in" request
        (str (:cemerick.friend/identity (:session request))))
   (GET "/dlogin" request
        (friend/authenticated "Dummy login page"))
-  (GET "/admin" request
-       (friend/authorize #{::admin} "Only admins can see this page."))
   (friend/logout (ANY "/logout" request (ring.util.response/redirect "/")))
+  
   (files "/"))
 
 (def app
