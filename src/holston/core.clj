@@ -26,6 +26,8 @@
       (throw (Exception. (str "Mandatory environment variable missing: " name)))))
 
 (defn get-oauth-callback-domain []
+  (println "ENV_DIR")
+  (println (System/getenv "ENV_DIR"))
   (if (System/getenv "ENV_DIR") ;; We're in Heroku, not local env
     (get-mandatory-env-var "HOLSTON_OATH2_CALLBACK_DOMAIN")
     "http://localhost:8080"))
@@ -109,4 +111,5 @@
 (defn -main
   "Starts the server"
   [port]
+  (println "Starting Holston")
   (run-server (site #'app) {:port (Integer. port)}))
