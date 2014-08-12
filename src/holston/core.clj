@@ -41,8 +41,11 @@
     ring-app
     auth/auth-params)))
 
+(defn start-server [port]
+  (println (str "Starting Holston on port " port))
+  (run-server (site #'app) {:port port})) 
+
 (defn -main
   "Starts the server"
   [port]
-  (println "Starting Holston")
-  (run-server (site #'app) {:port (Integer. port)}))
+  (start-server (Integer. port)))
