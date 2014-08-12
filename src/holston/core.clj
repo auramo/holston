@@ -21,15 +21,8 @@
 (def config-auth {:roles #{::user}})
 
 (defn get-mandatory-env-var [name]
-  (println (str "env var" name))
-  (println (System/getenv name))
-  (println (str "and now a var which we kinda know works" (System/getenv "DATABASE_URL")))
-  (println (System/getenv "DATABASE_URL"))
-  (println "user and path")
-  (println (System/getenv "USER"))
-  (println (System/getenv "PATH"))
-  (println "Now the or..")
   (or (System/getenv name)
+      (slurp (str (System/getenv "ENV_DIR") "/" name)) ;; This happens in macroexpansion and heroku only reveals config vars this way in compile
       (throw (Exception. (str "Mandatory environment variable missing: " name)))))
 
 (defn create-client-config []
