@@ -16,8 +16,8 @@
                  [friend-oauth2 "0.1.1" :exclusions [org.apache.httpcomponents/httpcore]]
                  [cheshire "5.2.0"]
                  [ring-server "0.3.0" :exclusions [ring]]
+                 [org.clojure/data.json "0.2.5"] ;; https://github.com/clojure/data.json
                  [clj-http "0.9.2"]]
-;; uberjar doesn't seem to work now...
   :uberjar-name "holston-standalone.jar"
   :main ^:skip-aot holston.core
   :target-path "target/%s"
