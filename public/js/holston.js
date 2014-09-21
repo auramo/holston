@@ -2,6 +2,7 @@ var holstonApp = angular.module('holstonApp', [
     'ngRoute',
     'holstonControllers'
 ]);
+
 holstonApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
