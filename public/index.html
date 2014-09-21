@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Static test page</title>
+<html ng-app="holstonApp">
+<head>
+    <meta name="viewport" content="wodth=device-width">
+    <title>Holston</title>
+    <link href="css/tasting-input.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  </head>
-
-  <body>
-    Testing
-    <script>
-      $( document ).ready(function() {
-        console.log( "ready!" );
-      });
-
-      $.get( "/authlink", function( data ) {
-        console.log("got result");
-        console.log(data);
-      });
-      
-    </script>
-  </body>
-
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/holston.js"></script>
+</head>
+<body>
+<ul class="nav">
+    <li><a href="#">Rate a beer</a></li>
+    <li><a href="#">Ratings</a></li>
+</ul>
+<div ng-view></div>
+</body>
 </html>
