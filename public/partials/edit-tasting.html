@@ -10,6 +10,10 @@
 
     <label>Rating</label>
     <input type="text" name="rating"/>
+
+<!-- beers is a collcetion in scope. Objects have name attribute -->
+    <autocomplete ng-model="seletedBeer" data="beers" on-type="onType"></autocomplete>
+
 </div>
 <!--
 Beer name

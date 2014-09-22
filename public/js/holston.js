@@ -1,5 +1,6 @@
 var holstonApp = angular.module('holstonApp', [
     'ngRoute',
+    'autocomplete',
     'holstonControllers'
 ]);
 
@@ -24,7 +25,9 @@ var holstonControllers = angular.module('holstonControllers', []);
 holstonControllers.controller('TastingController', ['$scope', '$http', '$routeParams',
     function ($scope, $routeParams) {
         $scope.foo = ['eka', 'toka']
+        $scope.beers = ['Lappari', 'AleKokki']
         $scope.tastingId = $routeParams.tastingId
+        $scope.onType = function(x) { console.log('onType', x) }
     }]);
 
 holstonControllers.controller('TastingListController', ['$scope',
