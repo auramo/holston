@@ -1,9 +1,7 @@
 <div class="tasting">
-
-    {{foo}}
-
     <label>Beer</label>
-    <input type="text" name="beer" ng-model="beer">  {{ beer }}
+    <autocomplete ng-model="seletedBeer" data="beers" on-type="onType"></autocomplete> {{ selectedBeer }}
+<!--    <input type="text" name="beer" ng-model="beer">  {{ beer }} -->
 
     <label>Brewery</label>
     <input type="text" name="brewery"/>
@@ -12,7 +10,6 @@
     <input type="text" name="rating"/>
 
 <!-- beers is a collcetion in scope. Objects have name attribute -->
-    <autocomplete ng-model="seletedBeer" data="beers" on-type="onType"></autocomplete>
 
 </div>
 <!--
