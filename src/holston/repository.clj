@@ -23,6 +23,9 @@
 (defn get-beer [name]
   (first (jdbc/query db ["SELECT id, name FROM beer WHERE name = ?" name])))
 
+(defn get-beers []
+  (jdbc/query db ["SELECT id, name FROM beer"]))
+
 (defn add-beer [name]
   (jdbc/insert! db :beer {:name name}))
 

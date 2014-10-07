@@ -8,4 +8,6 @@
 
 (defn count-of-tastings []
   (wrap-resp {:count (repo/get-number-of-tastings)}))
-  
+
+(defn beers []
+  (wrap-resp {:beers (repo/get-beers)}))

@@ -22,10 +22,16 @@ holstonApp.config(['$routeProvider',
 
 var holstonControllers = angular.module('holstonControllers', []);
 
-holstonControllers.controller('TastingController', ['$scope', '$http', '$routeParams',
-    function ($scope, $routeParams) {
-        $scope.foo = ['eka', 'toka']
-        $scope.beers = ['Lappari', 'AleKokki']
+holstonControllers.controller('TastingController', ['$scope', '$routeParams', '$http',
+    function ($scope, $routeParams, $http) {
+        //TODO for some reason 200 ok is always received even if we call /plaa/plaa
+        $http.get('/api/beers').
+            success(function(data) {
+                $scope.beers = _.pluck(data.beers, 'name')
+            }).
+            error(function(data, status, headers, config) {
+                console.log('ERROR', status)
+            });
         $scope.tastingId = $routeParams.tastingId
         $scope.onType = function(x) { console.log('onType', x) }
     }]);

@@ -17,6 +17,7 @@
 
   ;; API methods
   (GET "/api/tastings/count" request (api/count-of-tastings))
+  (GET "/api/beers" request (api/beers))
 
   ;; Dummy stuff which "tests" now authorization, to be removed
   (GET "/authlink" request
@@ -33,7 +34,8 @@
        (friend/authenticated "Dummy login page"))
   (friend/logout (ANY "/logout" request (ring.util.response/redirect "/")))
   
-  (files "/"))
+  (files "/")
+  (compojure.route/not-found "404 not found"))
 
 (def app
   (handler/site
