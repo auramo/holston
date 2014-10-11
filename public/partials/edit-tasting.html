@@ -1,16 +1,13 @@
 <div class="tasting">
     <label>Beer</label>
-    <autocomplete ng-model="seletedBeer" data="beers" on-type="onType"></autocomplete> {{ selectedBeer }}
-<!--    <input type="text" name="beer" ng-model="beer">  {{ beer }} -->
-
-    <label>Brewery</label>
-    <input type="text" name="brewery"/>
-
-    <label>Rating</label>
-    <input type="text" name="rating"/>
-
-<!-- beers is a collcetion in scope. Objects have name attribute -->
-
+    <form name="editTastingForm" ng-submit="save(tasting)">
+        <autocomplete ng-model="tasting.beer" data="beers" on-type="onType" required></autocomplete> <span class="error" ng-show="editTastingForm.beer.$error.required">*</span><br>
+        <label>Brewery</label>
+        <input type="text" ng-model="tasting.brewery" name="brewery" required/> <span class="error" ng-show="editTastingForm.brewery.$error.required">*</span><br>
+        <label>Rating</label>
+        <input type="text" ng-model="tasting.rating" name="rating" required/> <span class="error" ng-show="editTastingForm.rating.$error.required">*</span><br>
+        <button type="submit" ng-disabled="editTastingForm.$invalid">Save</button>
+    </form>
 </div>
 <!--
 Beer name

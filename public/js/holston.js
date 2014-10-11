@@ -25,6 +25,7 @@ var holstonControllers = angular.module('holstonControllers', []);
 holstonControllers.controller('TastingController', ['$scope', '$routeParams', '$http',
     function ($scope, $routeParams, $http) {
         //TODO for some reason 200 ok is always received even if we call /plaa/plaa
+        $scope.tasting = {}
         $http.get('/api/beers').
             success(function(data) {
                 $scope.beers = _.pluck(data.beers, 'name')
@@ -34,6 +35,7 @@ holstonControllers.controller('TastingController', ['$scope', '$routeParams', '$
             });
         $scope.tastingId = $routeParams.tastingId
         $scope.onType = function(x) { console.log('onType', x) }
+        $scope.save = function(tasting) { console.log("save", tasting); console.log(tasting) }
     }]);
 
 holstonControllers.controller('TastingListController', ['$scope',
