@@ -1,5 +1,5 @@
-angular.module('editTasting', []).controller('EditTastingController', ['$scope', '$routeParams', '$http',
-    function ($scope, $routeParams, $http) {
+angular.module('editTasting', []).controller('EditTastingController', ['$scope', '$routeParams', '$http', '$location',
+    function ($scope, $routeParams, $http, $location) {
         //TODO for some reason 200 ok is always received even if we call /plaa/plaa
         $scope.tasting = {}
         $http.get('/api/beers').
@@ -16,6 +16,7 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
             $http.post('/api/tastings', tasting).
                 success(function(data, status, headers, config) {
                     console.log('successful post')
+                    $location.path('/tastings')
                 }).
                 error(function(data, status, headers, config) {
                     console.log('error sending post post', status, data)
