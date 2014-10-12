@@ -18,6 +18,7 @@
   ;; API methods
   (GET "/api/tastings/count" request (api/count-of-tastings))
   (GET "/api/beers" request (api/beers))
+  (POST "/api/tastings" {body :body}  (api/add-tasting (slurp body)))
 
   ;; Dummy stuff which "tests" now authorization, to be removed
   (GET "/authlink" request

@@ -12,6 +12,14 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
         $scope.tastingId = $routeParams.tastingId
         $scope.onType = function(x) { console.log('onType', x) }
         $scope.save = save
-        function save(tasting) { console.log("save", tasting); console.log(tasting) }
+        function save(tasting) {
+            $http.post('/api/tastings', tasting).
+                success(function(data, status, headers, config) {
+                    console.log('successful post')
+                }).
+                error(function(data, status, headers, config) {
+                    console.log('error sending post post', status, data)
+                });
+        }
     }]
 );
