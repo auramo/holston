@@ -11,6 +11,7 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
             });
         $scope.tastingId = $routeParams.tastingId
         $scope.onType = function(x) { console.log('onType', x) }
-        $scope.save = function(tasting) { console.log("save", tasting); console.log(tasting) }
+        $scope.save = save
+        function save(tasting) { console.log("save", tasting); console.log(tasting) }
     }]
 );
