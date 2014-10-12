@@ -1,18 +1,11 @@
 <div class="tasting">
     <label>Beer</label>
     <form name="editTastingForm" ng-submit="save(tasting)">
-        <autocomplete ng-model="tasting.beer" data="beers" on-type="onType" required></autocomplete> <span class="error" ng-show="editTastingForm.beer.$error.required">*</span>
+        <autocomplete ng-model="tasting.beer" data="beers" on-type="onType" required></autocomplete>
         <label>Brewery</label>
-        <input type="text" ng-model="tasting.brewery" name="brewery" required/> <span class="error" ng-show="editTastingForm.brewery.$error.required">*</span>
+        <input type="text" ng-model="tasting.brewery" name="brewery" required/>
         <label>Rating</label>
-        <input type="number" ng-model="tasting.rating" min="0" max="100" name="rating" required/> <span class="error" ng-show="editTastingForm.rating.$error.required">*</span>
+        <input type="number" ng-model="tasting.rating" min="0" max="100" name="rating" required/>
         <button type="submit" ng-disabled="editTastingForm.$invalid">Save</button>
     </form>
 </div>
-<!--
-Beer name
-Brewery
-Rating
-
-pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]
--->
