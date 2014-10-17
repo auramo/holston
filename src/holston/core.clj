@@ -19,6 +19,7 @@
   (GET "/api/tastings/count" request (api/count-of-tastings))
   (GET "/api/beers" request (api/beers))
   (POST "/api/tastings" {body :body}  (api/add-tasting (slurp body)))
+  (GET "/api/userInfo" request (api/user-info request))
 
   ;; Dummy stuff which "tests" now authorization, to be removed
   (GET "/authlink" request
@@ -30,6 +31,7 @@
 
   ;; Authentication stuff
   (GET "/logged-in" request
+       (println "logged-in stuff" (str (:cemerick.friend/identity (:session request))))
        (str (:cemerick.friend/identity (:session request))))
   (GET "/dlogin" request
        (friend/authenticated "Dummy login page"))
