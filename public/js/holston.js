@@ -23,8 +23,11 @@ holstonApp.config(['$routeProvider',
 }]);
 
 holstonApp.controller('ApplicationController', ['$scope', 'AuthService', function($scope, AuthService) {
-    $scope.currentUser = ""
-    AuthService.userStatus().then(function (status) { $scope.currentUser = status })
+    $scope.currentUserEmail = ""
+    $scope.loggedIn = false
+    AuthService.userStatus().then(function (status) {
+        $scope.currentUserEmail = status.email
+        $scope.loggedIn = status.loggedIn
+    })
     $scope.userRoles = ['user', 'admin']
-    $scope.isAuthorized = false//AuthService.isAuthorized
 }]);

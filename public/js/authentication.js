@@ -11,9 +11,9 @@ angular.module('authentication', []).service('AuthService', function($http, $q) 
             success(function(data, status, headers, config) {
                 if (data.status === "logged-in") {
                     console.log(data.email)
-                    deferred.resolve(data.email)
+                    deferred.resolve({ email: data.email, loggedIn: true})
                 }
-                else if (data.status === "anonymous") deferred.resolve("Not logged in")
+                else if (data.status === "anonymous") deferred.resolve({ email: "", loggedIn: false})
                 else throw new Error("invalid response", data)
             }).
             error(function(data, status, headers, config) {
