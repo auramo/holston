@@ -22,8 +22,8 @@
   (GET "/api/userInfo" request (api/user-info request))
 
   ;; Auth stuff
-  (GET "/auth/login" request
-     (friend/authenticated "Dummy login page"))
+  (GET "/auth/login" {params :query-params}
+       (friend/authenticated (ring.util.response/redirect (str "/index.html#" (params "path")))))
 
   ;; Dummy stuff which "tests" now authorization, to be removed
   (GET "/authlink" request

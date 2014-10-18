@@ -36,7 +36,7 @@ holstonApp.controller('ApplicationController', ['$scope', 'AuthService', functio
        var requiresLogin = next.data ? !!next.data.requiresLogin : false
        if (requiresLogin) {
            AuthService.userStatus().then(function (status) {
-                if (!status.loggedIn) document.location.href="/auth/login"
+                if (!status.loggedIn) document.location.href="/auth/login?path="+$location.path()
            })
        }
    })
