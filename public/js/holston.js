@@ -11,7 +11,8 @@ holstonApp.config(['$routeProvider',
         $routeProvider.
             when('/editTasting/:id?', {
                 templateUrl: 'partials/edit-tasting.html',
-                controller: 'EditTastingController'
+                controller: 'EditTastingController',
+                data: { requiresLogin: true }
             }).
             when('/tastings', {
                 templateUrl: 'partials/list-tastings.html',
@@ -20,7 +21,7 @@ holstonApp.config(['$routeProvider',
             otherwise({
                 redirectTo: '/tastings'
             });
-}]);
+}])
 
 holstonApp.controller('ApplicationController', ['$scope', 'AuthService', function($scope, AuthService) {
     $scope.currentUserEmail = ""
@@ -30,4 +31,17 @@ holstonApp.controller('ApplicationController', ['$scope', 'AuthService', functio
         $scope.loggedIn = status.loggedIn
     })
     $scope.userRoles = ['user', 'admin']
-}]);
+}]).run(function ($rootScope, AuthService, $location) {
+   $rootScope.$on('$routeChangeStart', function (event, next) {
+       var requiresLogin = next.data ? !!next.data.requiresLogin : false
+       if (requiresLogin && !AuthService.loggedIn()) {
+            console.log("Not logged in but resource required that we should be")
+            event.preventDefault()
+            $rootScope.$broadcast('notLoggedIn')
+       }
+   })
+   $rootScope.$on('notLoggedIn', function() {
+        console.log("got broadcast not logged in")
+        document.location.href="/dlogin"
+   })
+})
