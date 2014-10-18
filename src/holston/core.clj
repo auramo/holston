@@ -21,6 +21,10 @@
   (POST "/api/tastings" {body :body}  (api/add-tasting (slurp body)))
   (GET "/api/userInfo" request (api/user-info request))
 
+  ;; Auth stuff
+  (GET "/auth/login" request
+     (friend/authenticated "Dummy login page"))
+
   ;; Dummy stuff which "tests" now authorization, to be removed
   (GET "/authlink" request
        (friend/authorize #{::user} "Authorized page."))
