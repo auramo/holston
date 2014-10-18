@@ -34,14 +34,10 @@ holstonApp.controller('ApplicationController', ['$scope', 'AuthService', functio
 }]).run(function ($rootScope, AuthService, $location) {
    $rootScope.$on('$routeChangeStart', function (event, next) {
        var requiresLogin = next.data ? !!next.data.requiresLogin : false
-       if (requiresLogin && !AuthService.loggedIn()) {
-            console.log("Not logged in but resource required that we should be")
-            event.preventDefault()
-            $rootScope.$broadcast('notLoggedIn')
+       if (requiresLogin) {
+           AuthService.userStatus().then(function (status) {
+                if (!status.loggedIn) document.location.href="/dlogin"
+           })
        }
-   })
-   $rootScope.$on('notLoggedIn', function() {
-        console.log("got broadcast not logged in")
-        document.location.href="/dlogin"
    })
 })
