@@ -11,10 +11,12 @@
     <script src="js/angular-route.js"></script>
     <script src="js/editTasting.js"></script>
     <script src="js/tastingList.js"></script>
+    <script src="js/authentication.js"></script>
     <script src="js/holston.js"></script>
     <script src="js/autocomplete.js"></script>
 </head>
-<body>
+<body ng-controller="ApplicationController">
+<label>{{currentUser}}</label>
 <ul class="nav">
     <li><a href="#editTasting">Rate a beer</a></li>
     <li><a href="#tastings">Ratings</a></li>
