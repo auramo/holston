@@ -1,4 +1,4 @@
-;; Contains database-access code
+;; Contains database-access code, very plain. No higher-order logic here.
 
 (ns holston.repository
   (:use [clojure.java.jdbc :as jdbc]))

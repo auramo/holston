@@ -3,7 +3,7 @@
             [clojure.data.json :as json])
   (:use [ring.util.response :only [response content-type]]))
 
-(def *ok-response* {:status "ok"})
+(def ok-response {:status "ok"})
 
 (defn- wrap-resp [response-data]
   (content-type (response (json/write-str response-data)) "application/json"))
@@ -13,7 +13,7 @@
 
 (defn add-tasting [raw-tasting]
   (println "add tasting" raw-tasting)
-  (wrap-resp *ok-response*))
+  (wrap-resp ok-response))
 
 (defn- get-email [identity]
   (:email (first (filter #(:email %) (vals (:authentications identity))))))
