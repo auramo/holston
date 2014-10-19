@@ -1,1 +1,9 @@
-Amount of tastings: {{ tastingCount }}
+
+Search: <input ng-model="query">
+<p>Amount of tastings: {{ tastings.length }}</p>
+
+<ul class="tastings">
+    <li ng-repeat="tasting in tastings| filter:query">
+        {{tasting.beer}} {{tasting.brewery}} {{tasting.averageRating}}
+    </li>
+</ul>
