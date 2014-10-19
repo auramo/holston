@@ -23,4 +23,4 @@
 (defn import-data [file-name]
   (doseq [tasting (parse-tastings file-name)]
     (println "Importing" tasting)
-    (tasting-service/add-tasting tasting)))
+    (tasting-service/add-tasting tasting "admin"))) ;;All the tastings from CSV are imported with user-id "admin" for now...

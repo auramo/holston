@@ -14,5 +14,6 @@
   (println (str "user email in add tasting " user-id)) ;; TODO add column and add field to repository
   (repo/add-tasting {:brewery_id (import-named-entity (:brewery raw-tasting) repo/get-brewery repo/add-brewery)
                      :beer_id (import-named-entity (:beer-name raw-tasting) repo/get-beer repo/add-beer)
-                     :user_rating (:rating raw-tasting)}))
+                     :user_rating (:rating raw-tasting)
+                     :user_id user-id}))
 

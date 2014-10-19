@@ -16,4 +16,5 @@ CREATE TABLE beer (id serial PRIMARY KEY,
 CREATE TABLE tasting (id serial PRIMARY KEY, 
                       beer_id integer REFERENCES beer(id), 
                       brewery_id integer REFERENCES brewery(id),
-                      user_rating integer);
+                      user_rating integer,
+                      user_id varchar(255));
