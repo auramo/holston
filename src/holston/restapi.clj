@@ -1,5 +1,6 @@
 (ns holston.restapi
   (:require [holston.repository :as repo]
+            [holston.tasting-service :as tasting-service]
             [clojure.data.json :as json])
   (:use [ring.util.response :only [response content-type]]))
 
@@ -11,8 +12,17 @@
 (defn count-of-tastings []
   (wrap-resp {:count (repo/get-number-of-tastings)}))
 
+(defn strict-get [place key]
+  {:pre [(contains? place key)]}
+  (get place key))
+
+(defn- convert-tasting [raw-tasting]
+  {:beer-name (strict-get raw-tasting "beer")
+   :brewery (strict-get raw-tasting "brewery")
+   :user_rating (strict-get raw-tasting "rating")})
+
 (defn add-tasting [raw-tasting]
-  (println "add tasting" raw-tasting)
+  (tasting-service/add-tasting (convert-tasting (json/read-str raw-tasting)))
   (wrap-resp ok-response))
 
 (defn- get-email [identity]

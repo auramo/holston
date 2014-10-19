@@ -16,7 +16,7 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
             $http.post('/api/tastings', tasting).
                 success(function(data, status, headers, config) {
                     console.log('successful post')
-                    $location.path('/tastings')
+                    $location.path('/tastings') //TODO add some ok message which shows with ng-if for example
                 }).
                 error(function(data, status, headers, config) {
                     console.log('error sending post post', status, data)
