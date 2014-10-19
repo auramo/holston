@@ -21,12 +21,13 @@
    :brewery (strict-get raw-tasting "brewery")
    :rating (strict-get raw-tasting "rating")})
 
-(defn add-tasting [raw-tasting]
-  (tasting-service/add-tasting (convert-tasting (json/read-str raw-tasting)))
-  (wrap-resp ok-response))
-
 (defn- get-email [identity]
   (:email (first (filter #(:email %) (vals (:authentications identity))))))
+
+(defn add-tasting [raw-tasting identity]
+   {:pre [identity]}
+  (tasting-service/add-tasting (convert-tasting (json/read-str raw-tasting)) (get-email identity))
+  (wrap-resp ok-response))
 
 (defn user-info [identity]
   (wrap-resp
