@@ -19,7 +19,7 @@
 (defn- convert-tasting [raw-tasting]
   {:beer-name (strict-get raw-tasting "beer")
    :brewery (strict-get raw-tasting "brewery")
-   :user_rating (strict-get raw-tasting "rating")})
+   :rating (strict-get raw-tasting "rating")})
 
 (defn add-tasting [raw-tasting]
   (tasting-service/add-tasting (convert-tasting (json/read-str raw-tasting)))
