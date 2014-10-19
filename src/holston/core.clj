@@ -19,7 +19,7 @@
   (GET "/api/tastings/count" request (api/count-of-tastings))
   (GET "/api/beers" request (api/beers))
   (POST "/api/tastings" {body :body}  (api/add-tasting (slurp body)))
-  (GET "/api/userInfo" request (api/user-info request))
+  (GET "/api/userInfo" request (api/user-info (:cemerick.friend/identity (:session request))))
 
   ;; Auth stuff
   (GET "/auth/login" {params :query-params}

@@ -28,9 +28,9 @@
 (defn- get-email [identity]
   (:email (first (filter #(:email %) (vals (:authentications identity))))))
 
-(defn user-info [request]
+(defn user-info [identity]
   (wrap-resp
-   (if-let [identity (:cemerick.friend/identity (:session request))]
+   (if identity
      {:status "logged-in" :email (get-email identity)}
      {:status "anonymous"})))
 
