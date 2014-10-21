@@ -37,3 +37,6 @@
 
 (defn beers []
   (wrap-resp {:beers (repo/get-beers)}))
+
+(defn get-beer-ratings []
+  (wrap-resp {:ratings (repo/get-beer-ratings)}))

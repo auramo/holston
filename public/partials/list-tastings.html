@@ -1,9 +1,8 @@
 
 Search: <input ng-model="query">
-<p>Amount of tastings: {{ tastings.length }}</p>
 
 <ul class="tastings">
-    <li ng-repeat="tasting in tastings| filter:query">
-        {{tasting.beer}} {{tasting.brewery}} {{tasting.averageRating}}
+    <li ng-repeat="rating in ratings| filter:query">
+        {{rating.beer_name}} {{rating.average_rating}} {{rating.rating_amount}}
     </li>
 </ul>

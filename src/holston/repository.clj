@@ -26,6 +26,11 @@
 (defn get-beers []
   (jdbc/query db ["SELECT id, name FROM beer"]))
 
+(defn get-beer-ratings []
+  (jdbc/query db ["SELECT avg(t.user_rating) as average_rating, count(*) as rating_amount, b.name as beer_name
+                   FROM tasting t, beer b 
+                   WHERE t.beer_id = b.id group by t.beer_id, beer_name"]))
+
 (defn add-beer [name]
   (jdbc/insert! db :beer {:name name}))
 
