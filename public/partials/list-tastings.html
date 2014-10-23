@@ -2,7 +2,21 @@
 Search: <input ng-model="query">
 
 <ul class="tastings">
-    <li ng-repeat="rating in ratings| filter:query">
-        {{rating.beer_name}} {{rating.average_rating}} {{rating.rating_amount}}
-    </li>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Beer</th>
+            <th>Average rating</th>
+            <th>Ratings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="rating in ratings| filter:query">
+            <td>{{rating.beer_name}}</td>
+            <td>{{rating.average_rating}}</td>
+            <td>{{rating.rating_amount}}</td>
+        </tr>
+        </tbody>
+    </table>
 </ul>
