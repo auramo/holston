@@ -3,7 +3,6 @@ angular.module('authentication', []).service('AuthService', function($http, $q) 
     var authService = {}
     var userStatus = null
     authService.loggedIn = function() {
-        console.log("userStatus in authservice", userStatus)
         if (!userStatus) return false
         return userStatus.loggedIn
     }
@@ -18,7 +17,6 @@ angular.module('authentication', []).service('AuthService', function($http, $q) 
             $http.get('/api/userInfo').
                 success(function(data, status, headers, config) {
                     if (data.status === "logged-in") {
-                        console.log(data.email)
                         userStatus = { email: data.email, loggedIn: true};
                         deferred.resolve(userStatus)
                     }

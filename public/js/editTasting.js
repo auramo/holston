@@ -10,7 +10,7 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
                 console.log('ERROR', status)
             });
         $scope.tastingId = $routeParams.tastingId
-        $scope.onType = function(x) { console.log('onType', x) }
+        $scope.onType = function(x) { /* Do some magic with disabling and showing existing brewery */  }
         $scope.save = save
         function save(tasting) {
             $http.post('/api/tastings', tasting).
