@@ -1,6 +1,9 @@
 ul.nav { list-style-type: none; padding-left: 0; margin-left: 0; }
 ul.nav a { display: block; width: 8em; text-decoration: none; border: 1px solid; background-color: darkcyan; color: white; padding: 5px;}
 
+th { text-align: left; }
+
+
 .tasting label { display: block; width: 10em; clear: left; }
 .tasting label, .tasting input, .tasting button { float: left; margin-bottom: 5px; }
 .tasting button { clear: left; }
