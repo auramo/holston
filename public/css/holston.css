@@ -16,7 +16,7 @@ button { color: #fff; background: #08c; padding: 1em; border: 0; }
 button:disabled { background: grey; }
 
 @media (max-width: 400px) {
-    body { margin-bottom:50px; } /* Same height as the footer menu */
+    .content { width: 100%; }
     .nav-wrapper {
         position:fixed;
         height:2.8em;
