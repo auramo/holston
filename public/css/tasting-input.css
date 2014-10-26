@@ -8,4 +8,7 @@ th { text-align: left; }
 .tasting label, .tasting input, .tasting button { float: left; margin-bottom: 5px; }
 .tasting button { clear: left; }
 
-input.ng-invalid { border-color: #ff0509; border-width: 1px; }
+@media (max-width: 400px) {
+    .tasting .autocomplete { width: 99%; }
+    .tasting input { width: 98%; }
+}
