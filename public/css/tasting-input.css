@@ -5,8 +5,9 @@ th { text-align: left; }
 
 
 .tasting label { display: block; width: 10em; clear: left; }
-.tasting label, .tasting input, .tasting button { float: left; margin-bottom: 5px; }
-.tasting button { clear: left; }
+.tasting label, .tasting input, .tasting button { clear: left; float: left; margin-bottom: 5px; }
+.tasting .autocomplete { clear: left; float: left; }
+.tasting button { clear: left; margin-top: 1em; }
 
 @media (max-width: 400px) {
     .tasting .autocomplete { width: 99%; }
