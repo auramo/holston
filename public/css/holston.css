@@ -10,12 +10,14 @@ button:disabled { background: grey; }
     body { margin-bottom:50px; } /* Same height as the footer menu */
     .nav-wrapper {
         position:fixed;
-        height:50px;
+        height:2.8em;
         bottom:0px;
         left:0px;
         right:0px;
         margin-bottom:0px;
+        background-color: white;
     }
+    ul.nav { margin: 0.3em; }
     ul.nav li { display: inline; }
     ul.nav a { width: auto; }
 }
