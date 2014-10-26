@@ -10,4 +10,6 @@
     </form>
 </div>
 <!-- TODO this could be a common include for pages requiring login. Especially if it has more stuff like wait-indicator img etc -->
-<div ng-if="!loggedIn">Logging in via google...</div>
+<div ng-if="!loggedIn">
+    <img src="/images/ajax-loader.gif"> <label>Logging in via google...</label>
+</div>
