@@ -17,7 +17,9 @@
     <script src="js/autocomplete.js"></script>
 </head>
 <body ng-controller="ApplicationController">
-<label class="user-info" ng-if="loggedIn">Logged in: {{currentUserEmail}}</label>
+<div class="header">
+    <label class="user-info" ng-if="loggedIn">Logged in: {{currentUserEmail}}</label>
+</div>
 
 <div class="nav-wrapper">
     <ul class="nav">
@@ -25,6 +27,8 @@
         <li><a href="#tastings">Ratings</a></li>
     </ul>
 </div>
-<div ng-view></div>
+<div class="content">
+    <div ng-view></div>
+</div>
 </body>
 </html>

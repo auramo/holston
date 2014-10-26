@@ -1,8 +1,10 @@
+.header { height: 1em; }
+.user-info { color: #707276; float: right; font-size: 14px; }
+
 ul.nav { list-style-type: none; padding-left: 0; margin-left: 0; }
 ul.nav a { display: inline-block; width: 8em; text-decoration: none; border: 1px solid; background-color: darkcyan; color: white; padding: 5px;}
 
 body, input, button, label { font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif; font-style: normal; font-weight: 300; font-size: 1em; }
-.user-info { color: #707276; float: right; font-size: 14px; }
 button { color: #fff; background: #08c; padding: 1em; border: 0; }
 button:disabled { background: grey; }
 
