@@ -9,10 +9,10 @@
 .content { float: left; }
 
 ul.nav { list-style-type: none; padding-left: 0; margin-left: 0; }
-ul.nav a { display: inline-block; width: 8em; text-decoration: none; border: 1px solid; background-color: darkcyan; color: white; padding: 5px;}
+ul.nav a { display: inline-block; width: 8em; text-decoration: none; background-color: white; color: black; padding: 5px; border-bottom: 1px solid #08c; }
 
 body, input, button, label { font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif; font-style: normal; font-weight: 300; font-size: 1em; }
-button { color: #fff; background: #08c; padding: 1em; border: 0; }
+button { color: #fff; background: #08c; padding: 0.5em; border: 0; }
 button:disabled { background: grey; }
 
 @media (max-width: 400px) {
@@ -28,5 +28,5 @@ button:disabled { background: grey; }
     }
     ul.nav { margin: 0.3em; }
     ul.nav li { display: inline; }
-    ul.nav a { width: auto; }
+    ul.nav a { width: auto; border-bottom: none; border-left: 1px solid #08c; border-right: 1px solid #08c; }
 }
