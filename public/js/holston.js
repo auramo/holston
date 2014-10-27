@@ -32,6 +32,7 @@ holstonApp.controller('ApplicationController', ['$scope', 'AuthService', functio
     })
     $scope.userRoles = ['user', 'admin']
 }]).run(function ($rootScope, AuthService, $location) {
+   $rootScope.location = $location;
    $rootScope.$on('$routeChangeStart', function (event, next) {
        var requiresLogin = next.data ? !!next.data.requiresLogin : false
        if (requiresLogin) {

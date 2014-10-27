@@ -10,6 +10,7 @@
 
 ul.nav { list-style-type: none; padding-left: 0; margin-left: 0; }
 ul.nav a { display: inline-block; width: 8em; text-decoration: none; background-color: white; color: black; padding: 5px; border-bottom: 1px solid #08c; }
+ul.nav li.selected a { color: orange; }
 
 body, input, button, label { font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif; font-style: normal; font-weight: 300; font-size: 1em; }
 button { color: #fff; background: #08c; padding: 0.5em; border: 0; }
