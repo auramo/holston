@@ -15,7 +15,7 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
         function save(tasting) {
             $http.post('/api/tastings', tasting).
                 success(function(data, status, headers, config) {
-                    $location.path('/tastings') //TODO add some ok message which shows with ng-if for example
+                    $location.path('/tastings/newAdded') //TODO add some ok message which shows with ng-if for example
                 }).
                 error(function(data, status, headers, config) {
                     console.log('error sending post post', status, data)

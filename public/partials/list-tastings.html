@@ -1,22 +1,21 @@
 
-Search: <input ng-model="query">
+<div class="notification" ng-if="showNewAdded">Tasting was saved successfully!</div>
 
-<ul class="tastings">
+<label class="search-label">Search:</label> <input class="search-field" ng-model="query">
 
-    <table>
-        <thead>
-        <tr>
-            <th>Beer</th>
-            <th>Average rating</th>
-            <th>Ratings</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="rating in ratings| filter:query">
-            <td>{{rating.beer_name}}</td>
-            <td>{{rating.average_rating}}</td>
-            <td>{{rating.rating_amount}}</td>
-        </tr>
-        </tbody>
-    </table>
-</ul>
+<table class="tastings">
+    <thead>
+    <tr>
+        <th>Beer</th>
+        <th>Average rating</th>
+        <th>Ratings</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="rating in ratings| filter:query">
+        <td>{{rating.beer_name}}</td>
+        <td>{{rating.average_rating}}</td>
+        <td>{{rating.rating_amount}}</td>
+    </tr>
+    </tbody>
+</table>

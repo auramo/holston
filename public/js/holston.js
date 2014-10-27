@@ -14,7 +14,7 @@ holstonApp.config(['$routeProvider',
                 controller: 'EditTastingController',
                 data: { requiresLogin: true }
             }).
-            when('/tastings', {
+            when('/tastings/:action?', {
                 templateUrl: 'partials/list-tastings.html',
                 controller: 'TastingListController'
             }).

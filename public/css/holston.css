@@ -12,6 +12,8 @@ ul.nav { list-style-type: none; padding-left: 0; margin-left: 0; }
 ul.nav a { display: inline-block; width: 8em; text-decoration: none; background-color: white; color: black; padding: 5px; border-bottom: 1px solid #08c; }
 ul.nav li.selected a { color: orange; }
 
+div.notification { float:left; clear: both; border: 0.2em solid; border-color: rgba(230, 226, 226, 0.38); margin-bottom: 0.3em; padding: 0.2em; display: inline-block; background-color: rgb(71, 220, 71); color: white; }
+
 body, input, button, label { font-family: "Open Sans",Verdana,Geneva,sans-serif,sans-serif; font-style: normal; font-weight: 300; font-size: 1em; }
 button { color: #fff; background: #08c; padding: 0.5em; border: 0; }
 button:disabled { background: grey; }
@@ -32,3 +34,7 @@ button:disabled { background: grey; }
     ul.nav li:last-of-type { display: inline; border-right: none; }
     ul.nav a { width: auto; border-bottom: none; }
 }
+
+.search-label { float:left; clear: both; }
+.search-field { float: left; }
+.tastings { clear: both; float: left; margin-left: 0; }
