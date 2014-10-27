@@ -27,6 +27,7 @@ button:disabled { background: grey; }
         background-color: white;
     }
     ul.nav { margin: 0.3em; }
-    ul.nav li { display: inline; }
-    ul.nav a { width: auto; border-bottom: none; border-left: 1px solid #08c; border-right: 1px solid #08c; }
+    ul.nav li { display: inline; border-right: 2px solid #08c; }
+    ul.nav li:last-of-type { display: inline; border-right: none; }
+    ul.nav a { width: auto; border-bottom: none; }
 }
