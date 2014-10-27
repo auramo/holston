@@ -6,7 +6,7 @@
     margin-bottom: 0em;
     color: orange; text-shadow: 1px 1px #ff0000;}
 .nav-wrapper { float: left; margin-right: 1em; }
-.content { float: left; }
+.content { float: left; margin-bottom: 2.8em; }
 
 ul.nav { list-style-type: none; padding-left: 0; margin-left: 0; }
 ul.nav a { display: inline-block; width: 8em; text-decoration: none; background-color: white; color: black; padding: 5px; border-bottom: 1px solid #08c; }
