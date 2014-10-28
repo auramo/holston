@@ -2,6 +2,7 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
     function ($scope, $routeParams, $http, $location) {
         //TODO for some reason 200 ok is always received even if we call /plaa/plaa
         $scope.tasting = {}
+        $scope.addingNewBeer = true
         $http.get('/api/beers').
             success(function(data) {
                 $scope.beers = _.pluck(data.beers, 'name')
@@ -10,7 +11,9 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
                 console.log('ERROR', status)
             });
         $scope.tastingId = $routeParams.tastingId
-        $scope.onType = function(x) { /* Do some magic with disabling and showing existing brewery */  }
+        $scope.onBeerSelect = function(beer) {
+            $scope.addingNewBeer = !_.contains($scope.beers, beer)
+        }
         $scope.save = save
         function save(tasting) {
             $http.post('/api/tastings', tasting).
