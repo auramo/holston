@@ -1,11 +1,12 @@
 
 th { text-align: left; }
 
-.tasting label { display: block; width: 10em; clear: left; }
-.tasting label, .tasting input, .tasting button { clear: left; float: left; margin-bottom: 5px; }
+.tasting label { display: inline-block; }
+.tasting .editLabel, .tasting input, .tasting button { clear: left; float: left; margin-bottom: 5px; }
+.tasting .firstLabel { float: left; margin-right: 0.5em; }
 .tasting .autocomplete { clear: left; float: left; }
 .tasting button { clear: left; margin-top: 1em; }
-
+.tasting .newIndicator { color: #707276; float: left; font-size: 0.7em; }
 @media (max-width: 400px) {
     .tasting .autocomplete { width: 99%; }
     .tasting input { width: 98%; }
