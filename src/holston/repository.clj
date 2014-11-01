@@ -26,6 +26,9 @@
 (defn get-beers []
   (jdbc/query db ["SELECT id, name FROM beer"]))
 
+(defn get-breweries []
+  (jdbc/query db ["SELECT id, name FROM brewery"]))
+
 (defn get-beer-ratings []
   (jdbc/query db ["SELECT avg(t.user_rating) as average_rating, count(*) as rating_amount, b.name as beer_name
                    FROM tasting t, beer b 

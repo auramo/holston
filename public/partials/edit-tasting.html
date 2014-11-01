@@ -4,7 +4,7 @@
         <autocomplete ng-model="tasting.beer" data="beers" on-type="onBeerSelect" on-select="onBeerSelect" equired></autocomplete>
         <div ng-show="addingNewBeer">
             <label class="editLabel">Brewery</label>
-            <input type="text" ng-model="tasting.brewery" name="brewery" required/>
+            <autocomplete ng-model="tasting.brewery" data="breweries"></autocomplete>
         </div>
         <label class="editLabel">Rating</label>
         <input type="number" ng-model="tasting.rating" min="0" max="100" name="rating" required/>
