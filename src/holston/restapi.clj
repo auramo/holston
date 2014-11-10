@@ -18,7 +18,7 @@
 
 (defn- convert-tasting [raw-tasting]
   {:beer-name (strict-get raw-tasting "beer")
-   :brewery (strict-get raw-tasting "brewery")
+   :brewery (get raw-tasting "brewery")
    :rating (strict-get raw-tasting "rating")})
 
 (defn- get-email [identity]

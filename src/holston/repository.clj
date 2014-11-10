@@ -34,8 +34,8 @@
                    FROM tasting t, beer b 
                    WHERE t.beer_id = b.id group by t.beer_id, beer_name"]))
 
-(defn add-beer [name]
-  (jdbc/insert! db :beer {:name name}))
+(defn add-beer [name brewery-id]
+  (jdbc/insert! db :beer {:name name :brewery_id brewery-id}))
 
 (defn db-sanity-check []
   (str "Static query from DB value: " (:?column? (first (jdbc/query db

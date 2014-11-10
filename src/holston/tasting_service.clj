@@ -7,12 +7,15 @@
   (let [record-from-db (search-func name)]
     (if (> (count record-from-db) 0)
       (:id record-from-db)
-      (do (add-func name)
+      (do (add-func)
           (:id (search-func name))))))
 
+(defn- add-beer [beer-name brewery-name]
+  (import-named-entity beer-name repo/get-beer (fn [] (repo/add-beer beer-name (import-named-entity brewery-name repo/get-brewery (fn [] (repo/add-brewery brewery-name)))))))
+
 (defn add-tasting [raw-tasting user-id]
-  (repo/add-tasting {:brewery_id (import-named-entity (:brewery raw-tasting) repo/get-brewery repo/add-brewery)
-                     :beer_id (import-named-entity (:beer-name raw-tasting) repo/get-beer repo/add-beer)
-                     :user_rating (:rating raw-tasting)
-                     :user_id user-id}))
+  (repo/add-tasting 
+   {:beer_id (add-beer (:beer-name raw-tasting) (:brewery raw-tasting))
+    :user_rating (:rating raw-tasting)
+    :user_id user-id}))
 
