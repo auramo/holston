@@ -15,7 +15,7 @@
   (try (Integer/parseInt str) (catch Exception e nil)))
 
 (defn parse-row [row]
-  {:beer-name (get row 4) :brewery (get row 5) :rating (parse-int (get row 11))})
+  {:beer-name (get row 4) :brewery (get row 5) :beer-style (get row 6) :rating (parse-int (get row 11))})
 
 (defn parse-tastings [file-name]
   (map parse-row (rest (take-csv file-name))))
