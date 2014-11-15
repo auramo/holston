@@ -1,6 +1,6 @@
 angular.module('editTasting', []).controller('EditTastingController', ['$scope', '$routeParams', '$http', '$location',
     function ($scope, $routeParams, $http, $location) {
-        $scope.tasting = {}
+        $scope.tasting = { location: 'home' }
         $scope.addingNewBeer = true
         $scope.breweries = []
         $scope.beerStyles = []
