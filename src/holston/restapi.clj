@@ -26,6 +26,7 @@
    :brewery (get raw-tasting "brewery")
    :beer-style (get raw-tasting "beerStyle")
    :alcohol (convert-alcohol-percent (get raw-tasting "alcohol"))
+   :location (get raw-tasting "location")
    :rating (strict-get raw-tasting "rating")})
 
 (defn- get-email [identity]

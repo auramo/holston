@@ -8,10 +8,12 @@
             <label class="editLabel">Style</label>
             <autocomplete ng-model="tasting.beerStyle" data="beerStyles"></autocomplete>
             <label class="editLabel">Alcohol</label>
-            <input type="text" ng-model="tasting.alcohol" name="alcohol" required/>
+            <input type="text" ng-model="tasting.alcohol" name="alcohol"/> <!-- TODO add basic validation for percent with two decimals -->
         </div>
         <label class="editLabel">Rating</label>
         <input type="number" ng-model="tasting.rating" min="0" max="100" name="rating" required/>
+        <label class="editLabel">Enjoyed at</label>
+        <input type="text" ng-model="tasting.location" name="location" required/>
         <button type="submit" ng-disabled="editTastingForm.$invalid">Save</button>
     </form>
 </div>
