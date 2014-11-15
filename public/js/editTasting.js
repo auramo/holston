@@ -1,9 +1,9 @@
 angular.module('editTasting', []).controller('EditTastingController', ['$scope', '$routeParams', '$http', '$location',
     function ($scope, $routeParams, $http, $location) {
-        //TODO for some reason 200 ok is always received even if we call /plaa/plaa
         $scope.tasting = {}
         $scope.addingNewBeer = true
         $scope.breweries = ['first brewery', 'second brewery']
+        $scope.beerStyles = ['kuraa', 'skeidaa']
         $http.get('/api/beers').
             success(function(data) {
                 $scope.beers = _.pluck(data.beers, 'name')
