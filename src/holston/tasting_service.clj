@@ -11,7 +11,10 @@
           (:id (search-func name))))))
 
 (defn- add-beer [beer-name brewery-name]
-  (fn [] (repo/add-beer beer-name (import-named-entity brewery-name repo/get-brewery (fn [] (repo/add-brewery brewery-name))))))
+  (fn []
+    (repo/add-beer
+     beer-name
+     (import-named-entity brewery-name repo/get-brewery (fn [] (repo/add-brewery brewery-name))))))
 
 (defn- add-or-select-beer [beer-name brewery-name]
   (import-named-entity beer-name repo/get-beer (add-beer beer-name brewery-name)))
