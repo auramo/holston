@@ -25,5 +25,6 @@
   (repo/add-tasting 
    {:beer_id (add-or-select-beer (:beer-name raw-tasting) (:brewery raw-tasting) (:beer-style raw-tasting) (:alcohol raw-tasting))
     :user_rating (:rating raw-tasting)
+    :location (:location raw-tasting)
     :user_id user-id}))
 

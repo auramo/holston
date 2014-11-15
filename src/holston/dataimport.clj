@@ -11,11 +11,19 @@
   (with-open [file (reader file-name)]
     (csv/parse-csv (slurp file))))
 
-(defn parse-int [str]
+(defn parse-int[str]
+  (try (Integer/parseInt str) (catch Exception e)))
+
+(defn parse-float [str]
   (try (Float/parseFloat str) (catch Exception e nil)))
 
 (defn parse-row [row]
-  {:beer-name (get row 4) :brewery (get row 5) :beer-style (get row 6) :alcohol (parse-int (get row 7)) :rating (parse-int (get row 11))})
+  {:beer-name (get row 4)
+   :brewery (get row 5)
+   :beer-style (get row 6)
+   :alcohol (parse-float (get row 7))
+   :location (get row 8)
+   :rating (parse-int (get row 11))})
 
 (defn parse-tastings [file-name]
   (map parse-row (rest (take-csv file-name))))
