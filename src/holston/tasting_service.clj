@@ -10,19 +10,20 @@
       (do (add-func)
           (:id (search-func name))))))
 
-(defn- add-beer [beer-name brewery-name beer-style]
+(defn- add-beer [beer-name brewery-name beer-style alcohol]
   (fn []
     (repo/add-beer
      beer-name
      (import-named-entity brewery-name repo/get-brewery (fn [] (repo/add-brewery brewery-name)))
-     (import-named-entity beer-style repo/get-beer-style (fn [] (repo/add-beer-style beer-style))))))
+     (import-named-entity beer-style repo/get-beer-style (fn [] (repo/add-beer-style beer-style)))
+     alcohol)))
 
-(defn- add-or-select-beer [beer-name brewery-name beer-style]
-  (import-named-entity beer-name repo/get-beer (add-beer beer-name brewery-name beer-style)))
+(defn- add-or-select-beer [beer-name brewery-name beer-style alcohol]
+  (import-named-entity beer-name repo/get-beer (add-beer beer-name brewery-name beer-style alcohol)))
 
 (defn add-tasting [raw-tasting user-id]
   (repo/add-tasting 
-   {:beer_id (add-or-select-beer (:beer-name raw-tasting) (:brewery raw-tasting) (:beer-style raw-tasting))
+   {:beer_id (add-or-select-beer (:beer-name raw-tasting) (:brewery raw-tasting) (:beer-style raw-tasting) (:alcohol raw-tasting))
     :user_rating (:rating raw-tasting)
     :user_id user-id}))
 

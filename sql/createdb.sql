@@ -16,6 +16,7 @@ CREATE TABLE beer_style (id serial PRIMARY KEY,
 CREATE TABLE beer (id serial PRIMARY KEY,
                    name varchar(255) UNIQUE,
                    brewery_id integer REFERENCES brewery(id),
+                   alcohol numeric(4, 2),
                    beer_style_id integer REFERENCES beer_style(id));
 
 -- Very minimal table for testing end-to-end functionalities

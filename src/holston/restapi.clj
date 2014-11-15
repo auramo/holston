@@ -20,6 +20,7 @@
   {:beer-name (strict-get raw-tasting "beer")
    :brewery (get raw-tasting "brewery")
    :beer-style (get raw-tasting "beerStyle")
+   :alcolhol (get raw-tasting "alcohol")
    :rating (strict-get raw-tasting "rating")})
 
 (defn- get-email [identity]
