@@ -2,8 +2,8 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
     function ($scope, $routeParams, $http, $location) {
         $scope.tasting = {}
         $scope.addingNewBeer = true
-        $scope.breweries = ['first brewery', 'second brewery']
-        $scope.beerStyles = ['kuraa', 'skeidaa']
+        $scope.breweries = []
+        $scope.beerStyles = []
         $http.get('/api/beers').
             success(function(data) {
                 $scope.beers = _.pluck(data.beers, 'name')
@@ -14,6 +14,13 @@ angular.module('editTasting', []).controller('EditTastingController', ['$scope',
         $http.get('/api/breweries').
             success(function(data) {
                 $scope.breweries = _.pluck(data.breweries, 'name')
+            }).
+            error(function(data, status, headers, config) {
+                console.log('ERROR', status)
+            });
+        $http.get('/api/beerStyles').
+            success(function(data) {
+                $scope.beerStyles = _.pluck(data.beerStyles, 'name')
             }).
             error(function(data, status, headers, config) {
                 console.log('ERROR', status)

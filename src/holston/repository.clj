@@ -32,6 +32,9 @@
 (defn get-beers []
   (jdbc/query db ["SELECT id, name FROM beer"]))
 
+(defn get-beer-styles []
+  (jdbc/query db ["SELECT id, name FROM beer_style"]))
+
 (defn get-breweries []
   (jdbc/query db ["SELECT id, name FROM brewery"]))
 

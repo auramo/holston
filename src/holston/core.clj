@@ -19,6 +19,7 @@
   (GET "/api/tastings/count" request (api/count-of-tastings))
   (GET "/api/beers" request (api/beers))
   (GET "/api/breweries" request (api/breweries))
+  (GET "/api/beerStyles" request (api/beer-styles))
   (POST "/api/tastings" request (api/add-tasting (slurp (request :body)) (:cemerick.friend/identity (:session request))))
   (GET "/api/ratings" request (api/get-beer-ratings))
   (GET "/api/userInfo" request (api/user-info (:cemerick.friend/identity (:session request))))
